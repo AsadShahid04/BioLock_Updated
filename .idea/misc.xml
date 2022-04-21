@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable-v24/action_done_background.xml" value="0.1705" />
+        <entry key="app/src/main/res/layout/applistitem.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/lock.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/lock_window.xml" value="0.15520833333333334" />
+        <entry key="app/src/main/res/layout/login.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/mainactivity.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/register.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/scanfingerprint.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/action_done.xml" value="0.1705" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/action_done_round.xml" value="0.1705" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/app_logo.xml" value="0.1645" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/app_logo_round.xml" value="0.1555" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
