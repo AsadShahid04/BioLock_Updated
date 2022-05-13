@@ -15,6 +15,7 @@ public class Register extends AppCompatActivity {
     private final String KEY_NAME = "";
 
     @Override
+    //used for helping new user to make password and re-enter password for setting the passcode to open the app in future uses
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
@@ -40,8 +41,8 @@ public class Register extends AppCompatActivity {
 
                     SharedPreferences.Editor editor = passlock.edit();
 
-                    editor.putString("data", pass);
-                    editor.apply();
+                    editor.putString("data", pass); //pass in the new password to be used for opening the app
+                    editor.apply(); //apply changes
 
                     startActivity(logintime);
                 }

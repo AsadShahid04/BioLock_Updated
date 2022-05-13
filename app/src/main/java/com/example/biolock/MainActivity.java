@@ -50,17 +50,17 @@ public class MainActivity extends AppCompatActivity {
             startService(serviceIntent);
         }
     }
-
+    //starting the service
     public void startService(View v) {
         Intent serviceIntent = new Intent(this, LockService.class);
         startService(serviceIntent);
     }
-
+    //stopping the service
     public void stopService() {
         Intent serviceIntent = new Intent(this, LockService.class);
         stopService(serviceIntent);
     }
-
+    //used for updating the status of the service on whether it is running or not
     private boolean isMyServiceRunning(Class<?> serviceClass) {
         ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
         for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
