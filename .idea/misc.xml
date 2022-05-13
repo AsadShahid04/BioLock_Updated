@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable-v24/action_done_background.xml" value="0.1705" />
+        <entry key="app/src/main/res/drawable-v24/action_done_foreground.xml" value="0.133" />
         <entry key="app/src/main/res/layout/applistitem.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/lock.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/lock_window.xml" value="0.15520833333333334" />
