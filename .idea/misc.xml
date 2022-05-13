@@ -7,9 +7,9 @@
         <entry key="app/src/main/res/layout/applistitem.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/lock.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/lock_window.xml" value="0.15520833333333334" />
-        <entry key="app/src/main/res/layout/login.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/mainactivity.xml" value="0.19610507246376813" />
-        <entry key="app/src/main/res/layout/register.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/register.xml" value="0.1" />
         <entry key="app/src/main/res/layout/scanfingerprint.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/action_done.xml" value="0.1705" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/action_done_round.xml" value="0.1705" />
