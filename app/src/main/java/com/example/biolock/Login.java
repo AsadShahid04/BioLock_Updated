@@ -38,11 +38,13 @@ public class Login extends AppCompatActivity {
         Button loginb = findViewById(R.id.loginbutton);
         TextView error = findViewById(R.id.errorMessage);
 
+        //passcode for loging into the app
         SharedPreferences passlock = PreferenceManager.getDefaultSharedPreferences(this);
         String passDetails = passlock.getString("data", "pass");
 
         loginb.setOnClickListener(new View.OnClickListener() {
             @Override
+            //check if passcode entered is the correct passcode
             public void onClick(View v) {
                 String check = enter.getText().toString();
 

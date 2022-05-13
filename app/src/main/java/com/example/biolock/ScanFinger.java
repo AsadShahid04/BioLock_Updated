@@ -102,9 +102,8 @@ public class ScanFinger extends AppCompatActivity {
 
     //methods for CryptoObject
     @TargetApi(Build.VERSION_CODES.M)
-    private void generateKey() {
+    private void generateKey() { //generate key to help read encrypted data
         try {
-
             keyStore = KeyStore.getInstance("AndroidKeyStore");
             KeyGenerator keyGenerator = KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore");
 
@@ -129,7 +128,7 @@ public class ScanFinger extends AppCompatActivity {
     }
 
     @TargetApi(Build.VERSION_CODES.M)
-    public boolean cipherInit() {
+    public boolean cipherInit() { //cipher is an object that can be used to perform encryption and decryption of data
         try {
             cipher = Cipher.getInstance(KeyProperties.KEY_ALGORITHM_AES + "/" + KeyProperties.BLOCK_MODE_CBC + "/" + KeyProperties.ENCRYPTION_PADDING_PKCS7);
         } catch (NoSuchAlgorithmException | NoSuchPaddingException e) {

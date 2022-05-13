@@ -8,6 +8,7 @@ import android.os.Build;
 public class RestarterLockReciever extends BroadcastReceiver {
 
     @Override
+    //starting the serviceIntent
     public void onReceive(Context context, Intent intent) {
         Intent serviceIntent  = new Intent(context, com.example.biolock.LockService.class); //make new service
 

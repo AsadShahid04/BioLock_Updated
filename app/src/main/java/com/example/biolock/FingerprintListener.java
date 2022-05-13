@@ -40,7 +40,7 @@ public class FingerprintListener {
             }
         }
     }
-
+    //activate the fingerprint handler and start scanning for a potential finger by the user
     public void startListening(FingerprintManager.CryptoObject cryptoObject, Context context) {
         this.mContext = context;
         mFingerprintManager = (FingerprintManager) mContext.getSystemService(FINGERPRINT_SERVICE);
@@ -54,7 +54,7 @@ public class FingerprintListener {
             }
         }
     }
-
+    //de-activate the fingerprint scanner
     public void stopListening() {
         if (isFingerScannerAvailableAndSet()) {
             try {
@@ -66,7 +66,7 @@ public class FingerprintListener {
             }
         }
     }
-
+    //requirements to be passed in order to made sure the fingerprint scanner is ready and set for use
     public boolean isFingerScannerAvailableAndSet() {
         if (mFingerprintManager == null){
             Log.d("rror", "1");

@@ -8,6 +8,7 @@ import android.os.Build;
 public class RebootLockReceiver extends BroadcastReceiver  {
     
     @Override
+    //used to reboot the serviceIntent
     public void onReceive(Context context, Intent intent) {
         if(intent.getAction().equalsIgnoreCase(Intent.ACTION_BOOT_COMPLETED)){
             Intent serviceIntent  = new Intent(context, LockService.class);

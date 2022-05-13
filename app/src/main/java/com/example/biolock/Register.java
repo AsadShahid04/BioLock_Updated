@@ -31,8 +31,6 @@ public class Register extends AppCompatActivity {
         if(!(passDetails.equals("null") )) {
             startActivity(logintime);
         }
-
-
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

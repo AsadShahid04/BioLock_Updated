@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         this.sendBroadcast(broadcastIntent);
         super.onDestroy();
     }
-
+    //method used to get a list of all the apps installed on the phone
     public void getallapps(View view) throws PackageManager.NameNotFoundException {
         startService(view);
         final Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
@@ -178,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
         Switch applistswitch;
         TextView applistname;
     }
-
+    //saves the list of the apps which are blocked onto the phone's storage
     private void saveList(ArrayList<String> listblock) {
         SharedPreferences.Editor editor = block.edit();
         if(!(listblock.isEmpty())) {
@@ -194,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
             editor.apply();
         }
     }
-
+    //retrieves the list of the apps which are blocked onto the phone's storage
     public ArrayList<String> retrieveList(ArrayList<String> listblock) {
         Set<String> set = block.getStringSet("blocklist", null);
         if(set != null) {
@@ -206,7 +206,7 @@ public class MainActivity extends AppCompatActivity {
             return new ArrayList<String>();
         }
     }
-
+    //used for removing any duplicates of apps blocked
     private ArrayList<String> removeInstance(ArrayList<String> listblock, String remov) {
         if(listblock.get(0).equals(remov)) {
             listblock.remove(0);
@@ -216,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
                 listblock.remove(i);
             }
         }
-        return listblock;
+        return listblock; //list of blocked apps
     }
 
 
