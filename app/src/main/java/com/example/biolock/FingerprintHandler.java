@@ -18,31 +18,34 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
     CancellationSignal cancellationSignal;
 
     public FingerprintHandler(Context context) {
-
         this.context = context;
-
     }
 
+    //Starts authentication of the fingerprint
     public void startAutha(FingerprintManager fingerprintManager, FingerprintManager.CryptoObject cryptoObject) {
         cancellationSignal = new CancellationSignal();
         fingerprintManager.authenticate(cryptoObject, null, 0, this, null);
     }
 
+    //On error or failure, sends the error to the user
     @Override
     public void onAuthenticationError(int errorCode, CharSequence errString) {
         this.update("There was an Auth Error. " + errString, false);
     }
 
+    //On error or failure, sends the error to the user
     @Override
     public void onAuthenticationFailed() {
         this.update("Auth Failed. ", false);
     }
 
+    //On error or failure, sends the error to the user
     @Override
     public void onAuthenticationHelp(int helpCode, CharSequence helpString) {
         this.update("Error: " + helpString, false);
     }
 
+    //On success, sends the user into the next page
     @Override
     public void onAuthenticationSucceeded(FingerprintManager.AuthenticationResult result) {
         this.update("You can now access the app.", true);
@@ -51,6 +54,7 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
         context.startActivity(letsgo);
     }
 
+    //On success, changing image to checkmark and changing text to reveal success
     private void update(String s, boolean b) {
         cancellationSignal.cancel();
         TextView paraLabel = (TextView) ((Activity) context).findViewById(R.id.paraLabel);
