@@ -17,8 +17,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+//the methods for logging in
 public class Login extends AppCompatActivity {
 
+    //on start, opens the layout and checks for permissions. Opens settings if permissions are not given. 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +43,7 @@ public class Login extends AppCompatActivity {
         SharedPreferences passlock = PreferenceManager.getDefaultSharedPreferences(this);
         String passDetails = passlock.getString("data", "pass");
 
+        //sets a listener on the login button to check the password
         loginb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,6 +61,7 @@ public class Login extends AppCompatActivity {
         });
     }
 
+    //checks the Usage Stats permission
     private boolean isAccessGrantedUsage() {
         try {
             PackageManager packageManager = getPackageManager();
@@ -75,6 +79,7 @@ public class Login extends AppCompatActivity {
         }
     }
 
+    //checks the Draw Over Other Apps permission
     private boolean isAccessGrantedDraw() {
         try {
             PackageManager packageManager = getPackageManager();
