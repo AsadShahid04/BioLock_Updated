@@ -81,7 +81,7 @@ public class ScanFinger extends AppCompatActivity {
 
                 mParaLabel.setText("You should add at least 1 Fingerprint to use this Feature");
 
-            } else { //phone is ready to go
+            } else { //phone is ready to go and send authentication request to FingerprintHandler
 
                 mParaLabel.setText("Place your Finger on Scanner to Access the App.");
                 generateKey();
