@@ -46,7 +46,7 @@
         android:layout_below="@+id/headingLabel"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="2dp"
-        app:srcCompat="@drawable/green_fingerprint" />
+        app:srcCompat="@drawable/green_fingerprint"/>
 
     <ImageView
         android:id="@+id/statusredfingerprint"
@@ -58,5 +58,5 @@
         android:layout_marginTop="-4dp"
         android:background="#FFFFFF"
         android:duplicateParentState="false"
-        app:srcCompat="@drawable/red_fingerprint" />
+        app:srcCompat="@drawable/red_fingerprint"/>
 </RelativeLayout>
