@@ -37,4 +37,26 @@
         android:text="Place your Finger on the Scanner to Proceed!"
         android:textAlignment="center"
         android:textColor="#000000" />
+
+
+    <ImageView
+        android:id="@+id/statusgreenfingerprint"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_below="@+id/headingLabel"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="2dp"
+        app:srcCompat="@drawable/green_fingerprint" />
+
+    <ImageView
+        android:id="@+id/statusredfingerprint"
+        android:layout_width="96dp"
+        android:layout_height="88dp"
+        android:layout_alignWithParentIfMissing="false"
+        android:layout_below="@+id/headingLabel"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-4dp"
+        android:background="#FFFFFF"
+        android:duplicateParentState="false"
+        app:srcCompat="@drawable/red_fingerprint" />
 </RelativeLayout>
