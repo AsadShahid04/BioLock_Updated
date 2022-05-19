@@ -8,6 +8,21 @@
     android:background="#020101"
     tools:context=".Register">
 
+    <TextView
+        android:id="@+id/registermessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome to BioLock!"
+        android:textColor="#FFFFFF"
+        android:textSize="34sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.064" />
+
     <Button
         android:id="@+id/registerbutton"
         android:layout_width="150dp"
@@ -17,10 +32,10 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.6" />
+        app:layout_constraintVertical_bias="0.851" />
 
     <EditText
         android:id="@+id/passwordtry1"
@@ -31,15 +46,29 @@
         android:gravity="center"
         android:hint="Reenter Password"
         android:inputType="textPassword"
-        android:textColorHint="#757575"
         android:textColor="#FFFFFF"
+        android:textColorHint="#757575"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.4" />
+        app:layout_constraintVertical_bias="0.655" />
+
+    <TextView
+        android:id="@+id/registermessage2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please register below:"
+        android:textColor="#673AB7"
+        android:textSize="20sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.147" />
 
     <EditText
         android:id="@+id/passwordtry"
@@ -52,12 +81,12 @@
         android:inputType="textPassword"
         android:textColor="#FFFFFF"
         android:textColorHint="#757575"
-        android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintVertical_bias="0.505" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
