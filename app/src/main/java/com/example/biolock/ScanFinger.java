@@ -37,6 +37,8 @@ public class ScanFinger extends AppCompatActivity {
     private TextView mHeadingLabel;
     private ImageView mFingerprintImage;
     private TextView mParaLabel;
+    private ImageView mstatusgreenfingerprint;
+    private ImageView mstatusredfingerprint;
     private Cipher cipher;
     private KeyguardManager keyguardManager; //will be used to check whether security is enabled on lockscreen or not.
     private KeyStore keyStore;
@@ -53,6 +55,8 @@ public class ScanFinger extends AppCompatActivity {
         mHeadingLabel = (TextView) findViewById(R.id.headingLabel);
         mFingerprintImage = (ImageView) findViewById(R.id.fingerprintImage);
         mParaLabel = (TextView) findViewById(R.id.paraLabel);
+        mstatusgreenfingerprint = (ImageView) findViewById(R.id.statusgreenfingerprint);
+        mstatusredfingerprint = (ImageView) findViewById(R.id.statusredfingerprint);
 
         //Below are the requirements Android Phone needs to run this app:
         // Check 1: Android version should be greater or equal to Marshmallow
@@ -65,27 +69,33 @@ public class ScanFinger extends AppCompatActivity {
             fingerprintManager = (FingerprintManager) getSystemService(FINGERPRINT_SERVICE);
             keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
             //if no fingerprint sensor detected on phone conditional statement below
-            if (!fingerprintManager.isHardwareDetected()) {
 
+            if (!fingerprintManager.isHardwareDetected()) {
+                mstatusgreenfingerprint.setVisibility(mstatusgreenfingerprint.INVISIBLE);
+                mstatusredfingerprint.setVisibility(mstatusredfingerprint.VISIBLE);
                 mParaLabel.setText("Fingerprint Scanner not detected in Device");
 
             } else if (ContextCompat.checkSelfPermission(this, Manifest.permission.USE_FINGERPRINT) != PackageManager.PERMISSION_GRANTED) { //makes sure if permission is granted
-
+                mstatusgreenfingerprint.setVisibility(mstatusgreenfingerprint.INVISIBLE);
+                mstatusredfingerprint.setVisibility(mstatusredfingerprint.VISIBLE);
                 mParaLabel.setText("Permission not granted to use Fingerprint Scanner");
 
             } else if (!keyguardManager.isKeyguardSecure()) { //makes sure if there is a lock on the phone lockscreen
-
+                mstatusgreenfingerprint.setVisibility(mstatusgreenfingerprint.INVISIBLE);
+                mstatusredfingerprint.setVisibility(mstatusredfingerprint.VISIBLE);
                 mParaLabel.setText("Add A Lock to your Phone in Settings");
 
             } else if (!fingerprintManager.hasEnrolledFingerprints()) { //makes sure if phone has at least 1 fingerprint registered
-
+                mstatusgreenfingerprint.setVisibility(mstatusgreenfingerprint.INVISIBLE);
+                mstatusredfingerprint.setVisibility(mstatusredfingerprint.VISIBLE);
                 mParaLabel.setText("You should add at least 1 Fingerprint to use this Feature");
 
             } else { //phone is ready to go and send authentication request to FingerprintHandler
-
+                mstatusredfingerprint.setVisibility(mstatusredfingerprint.INVISIBLE);
+                mstatusgreenfingerprint.setVisibility(mstatusgreenfingerprint.VISIBLE);
                 mParaLabel.setText("Place your Finger on Scanner to Access the App.");
                 generateKey();
-                if(cipherInit()){
+                if (cipherInit()) {
                     FingerprintManager.CryptoObject cryptoObject = new FingerprintManager.CryptoObject(cipher);
                     FingerprintHandler fingerprintHandler = new FingerprintHandler(this);
                     fingerprintHandler.startAutha(fingerprintManager, cryptoObject);
@@ -104,9 +114,8 @@ public class ScanFinger extends AppCompatActivity {
 
     //methods for CryptoObject
     @TargetApi(Build.VERSION_CODES.M)
-    private void generateKey() {
+    private void generateKey() { //generate key to help read encrypted data
         try {
-
             keyStore = KeyStore.getInstance("AndroidKeyStore");
             KeyGenerator keyGenerator = KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore");
 
@@ -131,7 +140,7 @@ public class ScanFinger extends AppCompatActivity {
     }
 
     @TargetApi(Build.VERSION_CODES.M)
-    public boolean cipherInit() {
+    public boolean cipherInit() { //cipher is an object that can be used to perform encryption and decryption of data
         try {
             cipher = Cipher.getInstance(KeyProperties.KEY_ALGORITHM_AES + "/" + KeyProperties.BLOCK_MODE_CBC + "/" + KeyProperties.ENCRYPTION_PADDING_PKCS7);
         } catch (NoSuchAlgorithmException | NoSuchPaddingException e) {
