@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 
+//on recieving a broadcast, restarts the service
 public class RestarterLockReciever extends BroadcastReceiver {
 
     @Override

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 
+//on recieving a broadcast, this reboots the foreground service
 public class RebootLockReceiver extends BroadcastReceiver  {
     
     @Override

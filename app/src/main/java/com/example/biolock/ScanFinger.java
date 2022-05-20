@@ -31,6 +31,7 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 
+//deals with authenticating the fingerprint before entering the blocked app
 public class ScanFinger extends AppCompatActivity {
 
     private TextView mHeadingLabel;
@@ -43,6 +44,7 @@ public class ScanFinger extends AppCompatActivity {
 
     private FingerprintManager fingerprintManager;
 
+    //creates the view and checks phone for fingerprint and avaliable tech
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,7 +81,7 @@ public class ScanFinger extends AppCompatActivity {
 
                 mParaLabel.setText("You should add at least 1 Fingerprint to use this Feature");
 
-            } else { //phone is ready to go
+            } else { //phone is ready to go and send authentication request to FingerprintHandler
 
                 mParaLabel.setText("Place your Finger on Scanner to Access the App.");
                 generateKey();

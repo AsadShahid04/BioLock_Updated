@@ -39,6 +39,7 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 
+//creates the lock window
 public class LockWindow {
     // declaring required variables
     private Context context;
@@ -57,6 +58,7 @@ public class LockWindow {
 
     private FingerprintManager fingerprintManager;
 
+    //on create, inflates the layout and organizes it
     public LockWindow(Context context) {
         this.context = context;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -85,6 +87,7 @@ public class LockWindow {
         mWindowManager = (WindowManager)context.getSystemService(WINDOW_SERVICE);
     }
 
+    //when opened, listens for fingerprints
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void open() {
         try {
@@ -104,7 +107,9 @@ public class LockWindow {
                         mParaLabel.setText("Place your Finger on the Scanner to Proceed!");
                         mFingerprintImage.setImageResource(R.mipmap.app_logo);
 
+                        //listens for fingerprints
                         fingerprintListener.setOnAuthenticationListener(new FingerprintManager.AuthenticationCallback() {
+                            //on error, sends the error message to the user
                             @RequiresApi(api = Build.VERSION_CODES.M)
                             @Override
                             public void onAuthenticationError(int errorCode, CharSequence errString) {
@@ -115,12 +120,14 @@ public class LockWindow {
                                 }
                             }
 
+                            //on external error, sends the error message to the user
                             @RequiresApi(api = Build.VERSION_CODES.M)
                             @Override
                             public void onAuthenticationHelp(int helpCode, CharSequence helpString) {
                                 mParaLabel.setText("Authentication help\n" + helpString);
                             }
 
+                            //on success, allows the user through to the app and updates objects in the window
                             @Override
                             public void onAuthenticationSucceeded(FingerprintManager.AuthenticationResult result) {
                                 mParaLabel.setText("Authentication Successful");
@@ -128,6 +135,7 @@ public class LockWindow {
                                 close();
                             }
 
+                            //on failure, sends the failure message to the user
                             @RequiresApi(api = Build.VERSION_CODES.M)
                             @Override
                             public void onAuthenticationFailed() {
@@ -135,6 +143,7 @@ public class LockWindow {
                             }
                         });
 
+                        //checks the fingerprint and starts listening
                         generateKey();
                         if (cipherInit()){
                             FingerprintManager.CryptoObject cryptoObject = new FingerprintManager.CryptoObject(cipher);
@@ -149,6 +158,7 @@ public class LockWindow {
         }
     }
 
+    //closes the lock window
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void close() {
         try {
@@ -167,7 +177,7 @@ public class LockWindow {
         }
     }
 
-    //methods for CryptoObject
+    //methods for CryptoObject to unencrypt the fingerprint for the phone
     @TargetApi(Build.VERSION_CODES.M)
     private void generateKey() {
         try {

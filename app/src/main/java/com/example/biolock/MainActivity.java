@@ -26,6 +26,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+//deals with starting the service and getting the list of apps for the main page
 public class MainActivity extends AppCompatActivity {
     TextView text;
     ListView listView;
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     Intent serviceIntent;
     private LockService lockService;
 
+    //starts the service and makes the layout appear
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,16 +53,19 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //starts the service
     public void startService(View v) {
         Intent serviceIntent = new Intent(this, LockService.class);
         startService(serviceIntent);
     }
 
+    //stops the service
     public void stopService() {
         Intent serviceIntent = new Intent(this, LockService.class);
         stopService(serviceIntent);
     }
 
+    //checks if service is running
     private boolean isMyServiceRunning(Class<?> serviceClass) {
         ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
         for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
@@ -73,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
+    //restarts the service if destroyed
     @Override
     protected void onDestroy() {
         //stopService(mServiceIntent);
@@ -84,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
+    //lists all the apps out
     public void getallapps(View view) throws PackageManager.NameNotFoundException {
         startService(view);
         final Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
@@ -116,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
         text.setText(installed.size() + " Apps are installed");
     }
 
+    //puts the list of apps into the mianpage for the user to see
     private class MyListAdapter extends ArrayAdapter<String> {
         private int layout;
         private MyListAdapter(Context context, int resource, List<String> objects) {
@@ -138,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
                     viewHolder.applistswitch.setChecked(true);
                 }
                 viewHolder.applistswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    //adds and removes apps from blocklist when the check is changed
                     @Override
                     public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                         if(isChecked) {
@@ -179,6 +188,7 @@ public class MainActivity extends AppCompatActivity {
         TextView applistname;
     }
 
+    //saves the blocklist to SharedPreferences
     private void saveList(ArrayList<String> listblock) {
         SharedPreferences.Editor editor = block.edit();
         if(!(listblock.isEmpty())) {
@@ -195,6 +205,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //retrieves the blocklist from SharedPreferences
     public ArrayList<String> retrieveList(ArrayList<String> listblock) {
         Set<String> set = block.getStringSet("blocklist", null);
         if(set != null) {
@@ -207,6 +218,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //removes all instances of an app in the blocklist
     private ArrayList<String> removeInstance(ArrayList<String> listblock, String remov) {
         if(listblock.get(0).equals(remov)) {
             listblock.remove(0);

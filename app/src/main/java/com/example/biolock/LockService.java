@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+//creates the background service to check if blocked app is opened
 public class LockService extends Service {
 
     private UsageStatsManager usageStatsManager;
@@ -43,6 +44,7 @@ public class LockService extends Service {
         return null;
     }
 
+    //on start, creates the notification and creates the lock window
     @Override
     public int onStartCommand(Intent intent, int flags, int startId){
         Intent notificationIntent = new Intent(this, com.example.biolock.MainActivity.class);
@@ -71,6 +73,8 @@ public class LockService extends Service {
         return START_STICKY;
     }
 
+    //constantly checks the foreground app to see if it is blocked.
+    //pulls up the lock window if blocked app is opened
     private Runnable runTask = new Runnable() {
         @RequiresApi(api = Build.VERSION_CODES.M)
         @Override
@@ -100,6 +104,7 @@ public class LockService extends Service {
         }
     }
 
+    //on foreground destruction, a broadcast is sent to the restarter listener.
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -110,6 +115,7 @@ public class LockService extends Service {
         this.sendBroadcast(broadcastIntent);
     }
 
+    //gets the foreground app
     public String getTopApp(@NonNull Context context, @NonNull ActivityManager activityManager) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             List<ActivityManager.RunningTaskInfo> appTasks = activityManager.getRunningTasks(1);
@@ -136,6 +142,7 @@ public class LockService extends Service {
         return "";
     }
 
+    //gets the app name from the system name
     public static String getAppNameFromPkgName(Context context, String packageName) {
         final Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
         mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
@@ -150,6 +157,7 @@ public class LockService extends Service {
         return packageName;
     }
 
+    //retrieves the list of blocked apps
     public ArrayList<String> retrieveList(ArrayList<String> listblock) {
         Set<String> set = block.getStringSet("blocklist", null);
         if(set != null) {

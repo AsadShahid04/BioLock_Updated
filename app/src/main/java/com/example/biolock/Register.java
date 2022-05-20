@@ -10,10 +10,12 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+//deals with first registering the user
 public class Register extends AppCompatActivity {
 
     private final String KEY_NAME = "";
 
+    //sets the layout and onclick listener
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +34,7 @@ public class Register extends AppCompatActivity {
         }
 
 
+        //checks that the two registered passwords are the same
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
